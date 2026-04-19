@@ -57,10 +57,3 @@ Interaction Logs: Tracking student engagement with the AI Tutoring sessions.
 👤 Author
 Prince Praveen Lead Developer & Data Scientist M.S. in Business Analytics & Artificial Intelligence, USF
 
-
-
-Bash
-git add README.md
-git commit -m "Add professional README documentation"
-git push origin main
-This README highlights your transition from a static prototype to an AI-integrated platform, making it a strong piece for your professional portfolio.
