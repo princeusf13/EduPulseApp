@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Analytics Dashboard | EduPulse AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        body { 
+            background: #f0f2f5; 
+            background-image: radial-gradient(#667eea15 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .navbar-brand { 
+            font-weight: 800; 
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* KPI Cards */
+        .kpi-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            background: white;
+            padding: 20px;
+        }
+
+        /* Chart Section Styling */
+        .chart-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: white;
+            height: 100%; /* Ensure cards in the same row are equal height */
+        }
+
+        .chart-header {
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+        }
+
+        .chart-title { font-weight: 700; color: #333; margin-bottom: 0; }
+        .chart-subtitle { font-size: 0.85rem; color: #6c757d; }
+
+        /* THE FIX: Explicit height for chart containers */
+        .chart-container {
+            position: relative;
+            height: 300px; /* Fixed height prevents infinite expansion */
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EduPulse AI</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="visuals.html">Analytics</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profDropdown" data-bs-toggle="dropdown">Admin</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="assignments.html">Manage Assignments</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="fw-bold mb-0">Learning Analytics <span class="text-primary">Dashboard</span></h2>
+                <p class="text-muted mb-0">Insights from AI-tutoring and Canvas data.</p>
+            </div>
+            
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="kpi-card text-center">
+                    <div class="text-muted small">Avg. Grade</div>
+                    <h3 class="fw-bold text-primary mb-0">88%</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="kpi-card text-center">
+                    <div class="text-muted small">Active Users</div>
+                    <h3 class="fw-bold text-success mb-0">1.2k</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="kpi-card text-center">
+                    <div class="text-muted small">AI Questions</div>
+                    <h3 class="fw-bold text-warning mb-0">24k</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="kpi-card text-center">
+                    <div class="text-muted small">Completion</div>
+                    <h3 class="fw-bold text-info mb-0">94%</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card chart-card">
+                    <div class="chart-header">
+                        <h5 class="chart-title">Grade Distribution</h5>
+                        <p class="chart-subtitle">Student performance across all letter grades</p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="chart-container">
+                            <canvas id="gradeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card chart-card">
+                    <div class="chart-header">
+                        <h5 class="chart-title">Topic Interest</h5>
+                        <p class="chart-subtitle">AI Chatbot focus areas</p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="chart-container">
+                            <canvas id="topicChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6">
+                <div class="card chart-card">
+                    <div class="chart-header">
+                        <h5 class="chart-title">Engagement Over Time</h5>
+                        <p class="chart-subtitle">Weekly AI interactions vs Assignment completions</p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="chart-container">
+                            <canvas id="engagementChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card chart-card">
+                    <div class="chart-header">
+                        <h5 class="chart-title">Course Difficulty Profile</h5>
+                        <p class="chart-subtitle">Metric comparison for ISM 6225</p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="chart-container">
+                            <canvas id="difficultyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Global Chart Defaults
+        Chart.defaults.maintainAspectRatio = false;
+        Chart.defaults.responsive = true;
+
+        // 1. Grade Distribution (Bar)
+        new Chart(document.getElementById('gradeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['A', 'B+', 'B', 'C+', 'C', 'D/F'],
+                datasets: [{
+                    label: 'Students',
+                    data: [450, 320, 510, 200, 110, 45],
+                    backgroundColor: '#667eea',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, grid: { display: false } } }
+            }
+        });
+
+        // 2. Topic Interest (Doughnut)
+        new Chart(document.getElementById('topicChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Logic', 'Coding', 'Theory', 'Math'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#667eea', '#764ba2', '#818cf8', '#cbd5e1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+
+        // 3. Engagement (Line/Area)
+        new Chart(document.getElementById('engagementChart'), {
+            type: 'line',
+            data: {
+                labels: ['W1', 'W2', 'W3', 'W4', 'W5'],
+                datasets: [{
+                    label: 'AI Chat',
+                    data: [100, 400, 350, 800, 950],
+                    borderColor: '#667eea',
+                    fill: true,
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    tension: 0.4
+                }]
+            }
+        });
+
+        // 4. Difficulty Profile (Radar)
+        new Chart(document.getElementById('difficultyChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Workload', 'Complexity', 'Support', 'Interest', 'Stress'],
+                datasets: [{
+                    label: 'Current Course',
+                    data: [80, 90, 70, 85, 60],
+                    borderColor: '#764ba2',
+                    backgroundColor: 'rgba(118, 75, 162, 0.2)'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse AI | Smart Learning Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: #0d6efd;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 100px 0;
+        }
+        .feature-card {
+            border: none;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .btn-primary {
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        footer {
+            background-color: #212529;
+            color: white;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EduPulse AI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="visuals.html">Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="crudDropdown" role="button" data-bs-toggle="dropdown">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="assignments.html">Manage Assignments</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Master Your Syllabus with <span class="text-primary">AI Insight</span></h1>
+                    <p class="lead mb-4">EduPulse integrates directly with your University's Canvas system to analyze assignments and provide personalized study paths using advanced AI.</p>
+                    <div class="d-flex gap-3">
+                        <a href="read.html" class="btn btn-primary btn-lg">Learn with AI</a>
+                        <a href="test.html" class="btn btn-outline-secondary btn-lg">Take a Test</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="homeimg.jpg" alt="App Preview" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section id="features" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Key Features</h2>
+            <p class="text-muted">Advanced analytical tools designed for the modern student.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 feature-card p-4">
+                    <div class="mb-3 text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                            <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1H2v-1.5a.5.5 0 0 1 0-1H2v-1.5a.5.5 0 0 1 0-1H2v-1.5a.5.5 0 0 1 0-1H2v-1.5a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1V2h1V.5a.5.5 0 0 1 .5-.5h1zm1 2h4v10H6V2zm1 1v8h2V3H7z"/>
+                        </svg>
+                    </div>
+                    <h4 class="fw-bold">AI Tutoring</h4>
+                    <p class="text-muted mb-3">Leverage an intelligent RAG-based assistant to master course content.</p>
+                    <ul class="small text-muted ps-3">
+                        <li><strong>Instant Clarification:</strong> Context-aware answers for complex syllabus topics.</li>
+                        <li><strong>Study Support:</strong> Targeted guidance for assignment questions and labs.</li>
+                        <li><strong>Safe Learning:</strong> Built with safety layers to ensure accurate information.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 feature-card p-4">
+                    <div class="mb-3 text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="fw-bold">Predictive Analytics</h4>
+                    <p class="text-muted mb-3">Stay ahead of your academic goals with data-driven performance metrics.</p>
+                    <ul class="small text-muted ps-3">
+                        <li><strong>Grade Projections:</strong> Forecast your final GPA based on current trends.</li>
+                        <li><strong>Effort Tracking:</strong> Monitor your study habits against peer benchmarks.</li>
+                        <li><strong>Risk Alerts:</strong> Early warning signals for topics requiring extra attention.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 feature-card p-4">
+                    <div class="mb-3 text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                        </svg>
+                    </div>
+                    <h4 class="fw-bold">Canvas Sync</h4>
+                    <p class="text-muted mb-3">Centralize your academic life with seamless LMS integration.</p>
+                    <ul class="small text-muted ps-3">
+                        <li><strong>Auto-Import:</strong> Sync assignments, grades, and deadlines instantly.</li>
+                        <li><strong>Course Hub:</strong> A unified view of all active syllabi and reading materials.</li>
+                        <li><strong>Live Updates:</strong> Get real-time notifications for instructor feedback.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="container text-center">
+            <p class="mb-2">© EduPulse AI - ISM 6225 Project - Prince Praveen</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="about.html" class="text-white-50 text-decoration-none">About Us</a>
+                <a href="https://github.com" class="text-white-50 text-decoration-none">GitHub Repository</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/04/19/16/20260419164028-C8F6WSI6.js" defer></script>
+</body>
+</html>
